@@ -60,26 +60,25 @@ provider:
 #    - include-me-dir/**
 
 functions:
-  functions:
-    getProductsList:
-      handler: handler.getProductsList
-      events:
-        - http:
-            path: products
-            method: get
-            cors: true
+  getProductsList:
+    handler: handler.getProductsList
+    events:
+      - http:
+          path: products
+          method: get
+          cors: true
 
-    getProductsById:
-      handler: handler.getProductById
-      events:
-        - http:
-            path: products/{productId}
-            method: get
-            cors: true
-            request:
-              parameters:
-                paths:
-                  productId: true
+  getProductsById:
+    handler: handler.getProductById
+    events:
+      - http:
+          path: products/{productId}
+          method: get
+          cors: true
+          request:
+            parameters:
+              paths:
+                productId: true
 
 #      - httpApi:
 #          path: /users/create
