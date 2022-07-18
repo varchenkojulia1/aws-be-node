@@ -1,4 +1,4 @@
-export const products = [
+const products = [
   {
     "count": 5,
     "description": "Iphone 6",
@@ -28,3 +28,5 @@ export const products = [
     "title": "Iphone 7S White"
   }
 ]
+
+module.exports = { products }

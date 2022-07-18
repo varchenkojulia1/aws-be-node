@@ -11,10 +11,10 @@
 #
 # Happy Coding!
 
-service: products
+service: products111111
 # app and org for use with dashboard.serverless.com
-#app: your-app-name
-#org: your-org-name
+app: rs-school-app
+org: yuliiavarchenko
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details

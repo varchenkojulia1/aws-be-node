@@ -1,9 +1,11 @@
-import { products } from './products.js'
+const { products } = require('./products');
 
-export function getProducts() {
+function getProducts() {
     return products;
 }
 
-export function getProductById(id) {
+function getProductById(id) {
     return products.find((product) => product.id === id);
 }
+
+module.exports = { getProducts, getProductById };

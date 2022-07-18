@@ -1,5 +1,5 @@
 'use strict';
-import * as productService from './service/products.service'
+const productService = require('./service/products.service')
 
 module.exports.getProductsList = async () => {
   return {
@@ -12,7 +12,7 @@ module.exports.getProductById = async (event) => {
     const id = event.pathParameters.productId;
     const product = productService.getProductById(id);
 
-    if(!!product) {
+    if(!product) {
         return {
             statusCode: 400,
             body: 'No product with this ID'
