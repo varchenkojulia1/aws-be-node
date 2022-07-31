@@ -1,0 +1,15 @@
+{
+  "name": "aws-be-node",
+  "version": "1.0.0",
+  "scripts": {
+    "strat-offline": "serverless offline"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "serverless-dotenv-plugin": "^4.0.1",
+    "serverless-offline": "^9.1.1"
+  }
+}
