@@ -24,7 +24,6 @@ provider:
   name: aws
   runtime: nodejs12.x
 
-
 # you can overwrite defaults here
 #  stage: dev
   region: eu-west-1
