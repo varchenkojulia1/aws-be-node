@@ -70,33 +70,44 @@ module.exports.getProductById = async (event) => {
 };
 
 module.exports.createProduct = async (event) => {
-    const { title, description, price } = JSON.parse(event.body);
     console.log(`createProduct. Event: ${event}`)
+    const { title, description, price, count } = JSON.parse(event.body);
     const client = getClient();
     await client.connect();
 
     try {
-        if (!title || !description || !price) {
+        if (!title || !description || !price || !count) {
             return {
                 statusCode: 400,
                 headers: CORS_HEADERS,
                 message: 'invalid data'
             }
         }
-        await client.query(`
-            insert into product_model(title, description, price) values
-            ('${title}', '${description}', ${price})
+        await client.query('BEGIN');
+
+        const { rows } = await client.query(`
+            insert into product_model(title, description, price)
+             values ('${title}', '${description}', ${price})
+             RETURNING id
         `);
+        const id = rows[0].id;
+
+        await client.query(`
+            insert into stock(product_id, count)
+             values ('${id}', ${count})
+        `);
+        await client.query('COMMIT');
 
         return {
             statusCode: 200,
             headers: CORS_HEADERS
-        }
+        };
+
     } catch (e) {
         return {
             statusCode: 500,
             headers: CORS_HEADERS,
-            message: 'something went wrong'
+            message: 'insertion error'
         }
     } finally {
         client.end();
